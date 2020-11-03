@@ -11,16 +11,8 @@ matrix:
         #- php: nightly
     fast_finish: true
 
-# before_install:
-#     - |
-#       # Enable extra ppa
-#       sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 6B05F25D762E3157
-#       sudo add-apt-repository -y ppa:ondrej/php
-#       sudo rm /etc/apt/sources.list.d/google-chrome.list
-#       sudo rm /etc/apt/sources.list.d/mongodb-3.4.list
-#       sudo apt update
-
 before_script: composer require --dev phpunit/phpunit ^9.3
+
 script: vendor/bin/phpunit
 
 after_failure: curl -X POST -H "Accept: application/vnd.github.v3+json" -H "Authorization: token curl -H "Authorization: token ${GITHUB_TOKEN}" https://api.github.com/repos/${TRAVIS_REPO_SLUG}/issues -d "{\"title\":\"[Travis ci] Build failed\"}"
