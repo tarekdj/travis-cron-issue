@@ -23,5 +23,7 @@ before_install:
 before_script: composer require --dev phpunit/phpunit ^9.3
 script: vendor/bin/phpunit
 
+after_failure: echo 'failed"
+
 # script:
 #     echo $TRAVIS_PHP_VERSION $php_extra | xargs -n1 bash -c '(</dev/tty run_tests $0)' || false
