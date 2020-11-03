@@ -2,8 +2,8 @@ language: php
 
 # dist: xenial
 
-# git:
-#     depth: 2
+git:
+    depth: 2
 
 matrix:
     include:
